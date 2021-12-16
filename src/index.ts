@@ -1,6 +1,6 @@
-import "source-map-support/register"
-import "dotenv/config"
+import "source-map-support/register";
+import "dotenv/config";
 
-import { app } from "./app"
+import { app } from "./app";
 
-console.log("hello world")
+console.log(app());
