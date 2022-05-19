@@ -3,6 +3,8 @@
   "engine": {
     "node": "16.15.0"
   },
+  "packageManager": "yarn@3.2.1",
+  "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "start": "node dist",

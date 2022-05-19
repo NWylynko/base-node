@@ -10,7 +10,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
-		"declaration": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "noImplicitThis": true,
@@ -18,7 +17,5 @@
     "noImplicitAny": true,
     "strictNullChecks": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
