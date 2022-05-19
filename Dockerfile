@@ -1,16 +1,26 @@
-FROM node:16.13.1-alpine
+FROM node:16.15.0-alpine as Deps
 
-# Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install app dependencies
-COPY package.json yarn.lock .yarn ./
+COPY ./package.json ./yarn.lock ./
 
-# Install app dependencies
-RUN yarn
+RUN yarn install --frozen-lockfile
 
-# Bundle app source
-COPY . .
+FROM node:16.15.0-alpine as Builder
+
+WORKDIR /app
+
+COPY --from=Deps /app .
+
+RUN yarn build
+
+FROM node:16.15.0-alpine as Runner
+
+WORKDIR /app
+
+COPY --from=Builder /app .
 
 # EXPOSE 4000
-CMD [ "yarn", "start" ]
+ENV NODE_ENV=production
+
+CMD ["yarn", "start"]
